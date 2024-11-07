@@ -1,0 +1,121 @@
+\documentclass[fontsize=8pt, a4paper, fleqn, landscape, DIV=calc]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+
+\usepackage{hyperref}%links in the pdf
+\hypersetup{pdfborder = {0 0 0}}%No borders around Hyperlinks
+
+%Layout
+\usepackage{multicol, geometry, tcolorbox, fancyhdr, lastpage, dirtytalk, qrcode, rotating}
+% mehrere spalten, page layout, farbboxen der titel, header/footer, linkt to last page, make the use of "" easier, QR code im Titel, Rotate tables
+\geometry{margin=1cm}
+\parindent 0pt
+\pagestyle{fancy}
+\newlength{\breite}
+\setlength{\breite}{0.5pt}
+\setlength{\columnseprule}{\breite}
+
+\usepackage[table,xcdraw]{xcolor}% color
+
+%Math stuff
+\usepackage{mathtools}
+%\allowdisplaybreaks %allow display breaks in align
+
+%automate Columnbreak
+\newcommand{\nextcol}{%
+\vfill\null%
+\columnbreak%
+}
+
+\usepackage{enumitem}%Itemise 
+
+%Display Code
+\usepackage{listings}
+\definecolor{codeGreen}{RGB}{69, 161, 18}
+\definecolor{backgroundcolor}{RGB}{255,255,255}
+\lstdefinestyle{mystyle}{
+    language = Java,
+    backgroundcolor=\color{backgroundcolor},
+    commentstyle=\color{blue},
+    keywordstyle=\color{codeGreen},
+    numberstyle=\tiny\color{black},
+    stringstyle=\color{olive},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                  
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=none,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    morekeywords  = {final, override, String}
+}
+\lstset{style=mystyle}
+
+% color for  Titel / sub Titel
+\definecolor{sectionbarcolor}{RGB}{148,0,255}
+\definecolor{subsectionbarcolor}{RGB}{220,173,255}
+\definecolor{sectiontextcolor}{RGB}{255,255,255}
+\definecolor{subsectiontextcolor}{RGB}{0,0,0}
+
+%section color box
+\setkomafont{section}{\mysection}
+\newcommand{\mysection}[1]{%
+    \Large%
+    \begin{tcolorbox}[colback=sectionbarcolor, coltext=sectiontextcolor, beforeafter skip=1pt, boxrule=0pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt]%
+        {#1}%
+    \end{tcolorbox}%
+}
+
+%subsection color box
+\setkomafont{subsection}{\mysubsection}
+\newcommand{\mysubsection}[1]{%
+    \Large%
+    \begin{tcolorbox}[colback=subsectionbarcolor, coltext=subsectiontextcolor, beforeafter skip=1pt, boxrule=0pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt]%
+        {#1}%
+    \end{tcolorbox}%
+}
+
+%Information for maketitle
+\title{\vspace{-1cm}Java für C++-Programmierer}
+\subtitle{HS 2024, Peter Bühler}
+\author{Fabian Suter, \today}
+\date{{\small 0.0.1}}
+
+%Header & footer
+\fancyhf{}
+\setlength{\footskip}{0.5cm}
+\fancyfoot[L]{\thepage{} / \pageref{LastPage}}
+\fancyfoot[R]{C++}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+	\begin{multicols*}{3}
+        \raggedcolumns
+        \begin{minipage}{0.75\columnwidth}
+		      \maketitle
+        \end{minipage}
+        \begin{minipage}{0.2\columnwidth}
+            \begin{center}
+                \quad
+                \qrcode[height=1cm]{https://github.com/FabianSuter}
+                \qquad    
+            \end{center}
+        \end{minipage}
+        
+        \thispagestyle{fancy}%Pagenumber for first page
+
+        \input{Sections/01_basics}
+        % \input{Sections/02_Objektorientierung.tex}
+        % \input{Sections/03_Memorymanagement.tex}
+        % \input{Sections/04_makefiles.tex}
+        \input{Sections/05_Snippets.tex}
+        
+        % \section{Emotional support meme}           
+
+	\end{multicols*}
+\end{document}

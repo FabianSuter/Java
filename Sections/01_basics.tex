@@ -1,0 +1,87 @@
+\section{Basics}
+
+\subsection{Grundsätzlich}
+
+Diese Zusammenfassung dient zur Hilfe beim Programmieren mit Java anhand von C++-Vorwissen. Es gibt einige wichtige Unterschiede, \textbf{Java:}
+
+\begin{itemize}[itemsep=1pt, parsep=0pt]
+    \item kennt keine Zeiger / Pointer
+    \item kennt keine Funktionen (reine OO-Sprache)
+    \item kennt kein Überladen von Operatoren
+    \item kennt keine Destruktoren (Garbage-Collector gibt Speicher frei)
+    \item kennt keine Mehrfachvererbung
+    \item stellt eine umfangreiche Klassenbibliothek zur Verfügung
+    \item -Programme sind plattformunabhängig
+    \item ist weniger hardwarenah wie C++
+    \item ...
+\end{itemize}
+
+\subsection{Sourcecode Hello world Java}
+
+\lstinputlisting{code/HelloWorld.java}
+
+% TODO: In Schleifen aufführen
+% \subsection{For each Loop}\label{forEach}
+
+% \verb|For each| - Loops laufen automatisch ein Array ab, ohne das zuerst die Grösse ermittelt werden muss. 
+% Die C - \verb|for| - Loop Syntax wurde etwas erweitert.
+% Syntax:
+
+% \lstinputlisting{code/forEach.cpp}
+
+% Siehe: Als Arrayname wird ein \say{Pointer} auf das Array verlangt, nicht auf das erste Element!  
+% Ein \verb|For each| funktioniert \textbf{nicht} mit einem \textbf{Pointerpointer}. 
+
+
+\subsection{Java Runtime}
+Der Compiler erzeugt anders als in C++ \textbf{Bytecode}, welcher anschliessend auf einer Java Virtual MAchine (JVM) laufen kann.
+Dadurch wird Java plattformunabhängig, da jede Plattform eine JVM hat, sei es Windows, Android oder MacOS.
+
+
+\section{Datentypen}
+
+Ein Datentyp besteht aus \textit{Werten} und \textit{Operationen}. Java besitzt zwei generelle Datentypen, 
+namentlich \textbf{Primitive Datentypen} und \textbf{Referenzdatentypen}.
+
+\subsection{Primitive Datentypen}
+Sie haben plattformunabhängig den gleichen Wertebereich, es gibt keine \verb|unsigned|-Typen. Für bool'sche Werte gibt es den Datentyp \verb|boolean|.
+
+\begin{center}
+    \begin{tabular}{lll}
+        \rowcolor[RGB]{239,239,239} 
+        \textbf{Typ} & \textbf{Beschr.}        & \textbf{Beispiele} \\ \hline
+        boolean      & Bool'scher Wert         & true, false \\
+        char         & Textzeichen (UTF16)     & 'a', 'B', etc. \\
+        byte         & Ganzzahl (8 Bit)        & -128 bis 127 \\
+        byte         & Ganzzahl (16 Bit)       & -32'768 bis 32'767 \\
+        byte         & Ganzzahl (32 Bit)       & $ -2^{31} $ bis $ 2^{31}-1 $ \\
+        byte         & Ganzzahl (64 Bit)       & $ -2^{63} $ bis $ 2^{63}-1 $, 1L \\
+        byte         & Gleitkommazahl (32 Bit) & 0.1f, 2e4f \\
+        byte         & Gleitkommazahl (64 Bit) & 0.1, 2e4 \\
+    \end{tabular}
+\end{center}
+
+\subsection{Referenzdatentypen}
+
+\subsubsection{Arrays}
+Arrays speichern wie in C++ mehrere Elemente mit selbem Datentyp. Der Zugriff erfolgt über Index, die Elemente liegen nebeneinander im Speicher.
+Die Grösse des Arrays muss bei der Deklaration festgelegt werden und ist später nicht mehr änderbar.\\
+Die Anzahl der Elemente kann in Java direkt mit \verb|length| abgerufen werden, siehe auch \textbf{\ref{Array-Loop}}.\\
+Falls der Index ungültig ist, wird eine\\
+\textbf{ArrayIndexOutOfBoundsException} geworfen.
+
+\subsection{Typumwandlung}
+
+\begin{minipage}{0.4\columnwidth}
+    \textbf{Implizit:}\\
+    Klein zu Gross,\\
+    kein Cast-Operator erf.\\
+    \lstinputlisting{code/implizit.java}
+\end{minipage}
+\begin{minipage}{0.55\columnwidth}
+    \textbf{Explizit:}\\
+    Gross zu Klein,\\
+    Cast-Operator erf.\\
+    \lstinputlisting{code/explizit.java}
+\end{minipage}
+
