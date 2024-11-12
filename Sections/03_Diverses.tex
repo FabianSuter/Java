@@ -29,6 +29,8 @@ Zu Beginn enthält sie, sofern nicht anders definiert, 10 Elemente und wird bei 
 \end{center}
 
 \subsection{LinkedList}
+Funktioniert ähnlich wie ArrayList. Die Implementierungerfolgt mit einer doppelt-verketteten Liste.
+Ausschlaggebend ist das schnelle Einfügen am Anfang oder Ende der Liste.
 
 \subsection{HashSet}
 
@@ -37,3 +39,42 @@ Zu Beginn enthält sie, sofern nicht anders definiert, 10 Elemente und wird bei 
 \subsection{HashMap}
 
 \subsection{TreeMap}
+
+\section{Vererbung}
+Die Vererbung funktioniert in Java ähnlich wie in C++. Eine Klasse in Java kann jedoch nur \textbf{eine} Basisklasse haben.
+Eine abgeleitete Klasse erbt die Instanzvariablen und Instanzmethoden der Basisklasse.
+Die oberste Klasse aller Basisklassen ist \verb|Object|. Methoden von \verb|Object| sind:
+\begin{itemize}
+    \item \verb|public String toString()|
+    \item \verb|public boolean equals(Object obj)|
+    \item \verb|public int hashCode()|
+    \item ...
+\end{itemize}
+
+\subsection{Impliziter Code in Vererbung}
+\begin{center}
+    \includegraphics[width=0.9\columnwidth]{pictures/vererbung-implizit.png}
+\end{center}
+
+\subsection{Konstruktor bei Vererbung}
+\begin{center}
+    \includegraphics[width=0.9\columnwidth]{pictures/vererbung-konstr.png}
+\end{center}
+
+\subsection{Overriden von Methoden}
+Gleiche Funktion wie das Keyword \verb|virtual| in C++, dieses gibt es jedoch nicht in Java. Stattdessen wird
+vor einer neu implementierten Methode einer Subklasse das Schlüsselwort \verb|@Override| gesetzt. Dies ist optional, aber sinnvoll.\\
+\verb|@Override|\\
+\verb|public void print()|\\
+
+Mit \verb|super| wir eine überschriebene Methode aufgerufen.
+\begin{center}
+    \includegraphics[width=0.9\columnwidth]{pictures/super.png}
+\end{center}
+
+\section{Binding}
+\subsection{Dynamic Binding}
+Generell bei nicht-privaten Instanzmethoden
+
+\subsection{Static Binding}
+Generell bei privaten Instanzmethoden (In Subklasse nicht mehr sichtbar $\rightarrow$ Neudef. der Methode) und statischen Methoden
