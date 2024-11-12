@@ -1,4 +1,4 @@
-// Zahlen aufsummieren, die grösser 0 sind
+// Zahlen aufsummieren, die groesser 0 sind
 int[] numbers = { -5, 4, 2, -7, 4 };
 int sum = 0;
 
