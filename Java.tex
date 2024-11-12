@@ -58,8 +58,10 @@
 % color for  Titel / sub Titel
 \definecolor{sectionbarcolor}{RGB}{148,0,255}
 \definecolor{subsectionbarcolor}{RGB}{220,173,255}
+\definecolor{subsubsectionbarcolor}{RGB}{229, 197, 252}
 \definecolor{sectiontextcolor}{RGB}{255,255,255}
 \definecolor{subsectiontextcolor}{RGB}{0,0,0}
+\definecolor{subsubsectiontextcolor}{RGB}{0, 0, 0}
 
 %section color box
 \setkomafont{section}{\mysection}
@@ -74,7 +76,15 @@
 \setkomafont{subsection}{\mysubsection}
 \newcommand{\mysubsection}[1]{%
     \Large%
-    \begin{tcolorbox}[colback=subsectionbarcolor, coltext=subsectiontextcolor, beforeafter skip=1pt, boxrule=0pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt]%
+    \begin{tcolorbox}[colback=subsectionbarcolor, coltext=subsectiontextcolor, beforeafter skip=0pt, boxrule=0pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt]%
+        {#1}%
+    \end{tcolorbox}%
+}
+
+%subsubsection color box
+\setkomafont{subsubsection}{\mysubsubsection}
+\newcommand{\mysubsubsection}[1]{%
+    \begin{tcolorbox}[colback=subsubsectionbarcolor, coltext=subsubsectiontextcolor, beforeafter skip=1pt, boxrule=0pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt]%
         {#1}%
     \end{tcolorbox}%
 }

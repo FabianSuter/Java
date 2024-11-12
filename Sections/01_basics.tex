@@ -53,13 +53,34 @@ Sie haben plattformunabhängig den gleichen Wertebereich, es gibt keine \verb|un
         boolean      & Bool'scher Wert         & true, false \\
         char         & Textzeichen (UTF16)     & 'a', 'B', etc. \\
         byte         & Ganzzahl (8 Bit)        & -128 bis 127 \\
-        byte         & Ganzzahl (16 Bit)       & -32'768 bis 32'767 \\
-        byte         & Ganzzahl (32 Bit)       & $ -2^{31} $ bis $ 2^{31}-1 $ \\
-        byte         & Ganzzahl (64 Bit)       & $ -2^{63} $ bis $ 2^{63}-1 $, 1L \\
-        byte         & Gleitkommazahl (32 Bit) & 0.1f, 2e4f \\
-        byte         & Gleitkommazahl (64 Bit) & 0.1, 2e4 \\
+        short        & Ganzzahl (16 Bit)       & -32'768 bis 32'767 \\
+        int          & Ganzzahl (32 Bit)       & $ -2^{31} $ bis $ 2^{31}-1 $ \\
+        long         & Ganzzahl (64 Bit)       & $ -2^{63} $ bis $ 2^{63}-1 $, 1L \\
+        float        & Gleitkommazahl (32 Bit) & 0.1f, 2e4f \\
+        double       & Gleitkommazahl (64 Bit) & 0.1, 2e4 \\
     \end{tabular}
 \end{center}
+
+Gleitkommazahlen ohne Angaben sind automatisch \verb|double|.
+
+\subsubsection{Überlauf / Unterlauf}
+Bei \textbf{Ganzzahlen} ist der Überlauf in Java definiert, im Gegensatz zu C++.\\
+2147483647 + 1 $ \rightarrow $ -2147483648\\
+
+Bei \textbf{Gleitkommazahlen} gilt dasselbe:\\
+2 * 1e308 $ \rightarrow $ \verb|POSITIVE_INFINITY|\\
+5e-324 / 2 $ \rightarrow $ 0.0
+
+\subsubsection{Undefinierte Operationen}
+\textbf{Ganzzahlen} werfen bei Division/Modulo durch 0 einen Fehler bzw. eine Exception.\\
+
+\textbf{Gleitkommazahlen} werfen bei Division durch 0 ein \verb|POSITIVE_INFINITY| resp. \verb|NEGATIVE_INFINITY|\\
+Bei undefinierten Rechnungen wie 0 / 0 wird \verb|NaN| zurückgegeben.
+
+\subsubsection{Text-Literale}
+\textbf{char} mit Apostrophen: \verb|'A'|, \verb|'\n'| (NewLine), \verb|'\''| (Apostroph) \\
+
+\textbf{String} mit Anführungszeichen: \verb|"Say \"hello\"!\n"|
 
 \subsection{Referenzdatentypen}
 
