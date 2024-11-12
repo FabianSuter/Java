@@ -98,6 +98,28 @@ Die Anzahl der Elemente kann in Java direkt mit \verb|length| abgerufen werden, 
 Falls der Index ungültig ist, wird eine\\
 \textbf{ArrayIndexOutOfBoundsException} geworfen.
 
+\subsubsection{Enums}
+Ähnliche Verwendung wie in C++. Enums können als Konstantenlisten verwendet werden:
+\lstinputlisting{code/Weekday.java}
+
+\subsubsection{Collections}
+\begin{center}
+    \begin{tabular}{lll}
+        \rowcolor[RGB]{239,239,239} 
+        \textbf{Interface} & \textbf{Klassen} & \textbf{Eigenschaften} \\ \hline
+        List & ArrayList, LinkedList & Folge von Elementen, \\
+             &                       & Duplikate möglich\\
+        \hline
+        Set  & HashSet, TreeSet & Menge von Elementen, \\
+             &                       & keine Duplikate \\
+        \hline
+        Map  & HashMap, TreeMap & Abbildung Schlussel $\rightarrow$ Werte, \\
+        &                       & keine Duplikate \\
+    \end{tabular}
+\end{center}
+
+Siehe auch Kapitel \ref{Collections} 
+
 \subsection{Typumwandlung}
 
 \begin{minipage}{0.4\columnwidth}
