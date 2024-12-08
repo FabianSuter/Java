@@ -36,6 +36,28 @@ Falls bei Funktionen die Anzahl der Argumente nicht im Voraus bekannt ist, kann 
 Syntax verwendet werden: \verb|static int sum(int... numbers){}|\\
 Der Compiler generiert ein Array aus der Parameterliste.
 
+\subsection{Methodenreferenzen}
+Anstatt Hilfsklassen für häufig verwendete Methoden zu erstellen, kann auch mit 
+Methodenreferenzen gearbeitet werden, wie in C++ mit Funktionszeigern. Für die Referenzierung braucht es
+eine Funktionsschnittstelle und die Implementierung. Methodenreferenzen benötigen eine aufrufende \textbf{höherwertige} Funktion. \\
+Referenz-Varianten:\\
+\begin{tabular}{ll}
+    \verb|this::compare|    & Methode \verb|compare| im selben Objekt \\
+    \verb|other::compare|   & Methode \verb|compare| in Objekt \textit{other} \\
+    \verb|MyClass::compare| & Statische Methode in \textit{MyClass} \\
+    \verb|MyClass::new|     & Konstruktor der Klasse \textit{MyClass} \\
+\end{tabular}
+
+\includegraphics[width=\linewidth]{pictures/methoden-referenzen.jpg}
+
+
+\subsubsection{Lambdas}
+Ad-Hoc Implementierung anstatt einer expliziten Methodenreferenz. \\
+\includegraphics[width=\linewidth]{pictures/lambda.jpg}
+\verb|Person|,\verb|{}| und \verb|return| sind optional, wenn nur ein Ausdruck enthalten ist
+
+\textbf{Faustregel}: Lambdas sind kurz ($\sim$ 3 Zeilen), für längere Methodenreferenzen verwenden, siehe auch \ref{Lambdas}
+
 \subsection{Unit Testing}
 Unit Testing ist eine der Varianten, um Bugs zu verhindern. In guten Unit Tests sollen möglichst alle relevanten Fälle abgedeckt sein.
 Dazu gehören Standardfälle (im Bereich der Funktion) und Edge Cases (z.B. 0, max. und min. Bereich, usw.). Siehe auch \ref{Unit-Test}\\
