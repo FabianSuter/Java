@@ -31,6 +31,11 @@ Methode arbeitet mit Kopie der Referenz
     \includegraphics[width=0.9\columnwidth]{pictures/reference-params.png}    
 \end{center}
 
+\subsubsection{Variadische Methoden}
+Falls bei Funktionen die Anzahl der Argumente nicht im Voraus bekannt ist, kann folgende
+Syntax verwendet werden: \verb|static int sum(int... numbers){}|\\
+Der Compiler generiert ein Array aus der Parameterliste.
+
 \subsection{Unit Testing}
 Unit Testing ist eine der Varianten, um Bugs zu verhindern. In guten Unit Tests sollen möglichst alle relevanten Fälle abgedeckt sein.
 Dazu gehören Standardfälle (im Bereich der Funktion) und Edge Cases (z.B. 0, max. und min. Bereich, usw.). Siehe auch \ref{Unit-Test}\\
@@ -75,4 +80,41 @@ Faustregel:
 
 Für Zugriffe auf \verb|private|-Variablen können Getter- und Setter-Methoden definiert werden. Siehe auch \ref{GetSet}
 
+
+\subsection{Generics}
+
+\textit{Disclaimer, folgende Themen sind hier nicht enthalten: Typebounds, Wildcardtypen, Covarianz, Type-Erasure}
+
+Generics dienen dazu, typ-unabhängige Frames zu erstellen. 
+
+\subsubsection{Generische Variablen}
+Die Variable dient als Platzhalter innerhalb einer generischen Klasse, Methode oder Interface. Sie wird mit \verb|<>| umschlossen 
+und kann innerhalb der Klasse,... wie ein normaler Typ verwendet werden.\\
+Häufig verwendete Namen:\\
+\begin{tabular}{l l|l l}\hline
+    E & Element & T & Type\\
+    K & Key     & V & Value\\
+    N & Number  & S, U ,V,... & 2ter, 3ter, 4ter Type \\\hline
+\end{tabular}\\
+\\
+Mehrere Typ-Variablen gleichzeitig sind zulässig, z.B. \verb|<T, U>|
+
+\subsubsection{Generische Klassen}
+Eine Klasse mit Typ-Variable. Die Variable dient als Platzhalter für unbekannten Typ. Verschachtelung bei der Anwendung ist zulässig.\\
+\includegraphics[width=\linewidth]{pictures/generic-class.jpg}\\
+Bei der Anwendung macht der Compiler eine statische Prüfung des Datentyps. der Type-Cast entfällt (auto-boxing, -unboxing)
+
+
+\subsubsection{Generische Interfaces}\label{StackIterator}
+Gleiche Syntaxregeln wie bei generischen Klassen, jede Klasse kann generische Interfaces implementieren.\\
+Anwendung:\\
+\includegraphics[width=\linewidth]{pictures/generic-interface1.jpg}
+\hrule
+\includegraphics[width=\linewidth]{pictures/generic-interface2.jpg}
+
+\subsubsection{Generische Methoden}
+Generische Methoden sind unabhängig von generischen Klassen und Interfaces. Die Implementation kann in normalen, 
+nicht generischen Klassen erfolgen und ist auch in statischen Methoden zulässig.\\
+Die Typ-Variable muss in Klammer \verb|<>| vor dem Rückgabewert stehen. \\
+\verb|public static <T> List<T> merge(List<T> a, List<T> b) { … }|
 
