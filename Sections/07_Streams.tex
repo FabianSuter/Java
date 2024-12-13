@@ -68,3 +68,13 @@ $\updownarrow$ \\
     \verb|Files.write(Path.of("out.txt"),| \\
     \verb|lines, StandardCharsets.UTF_8);| \\
 \end{tabular}
+
+\subsection{Serialisierung}
+\verb|Serializable|-Interface implentieren\\
+\verb|class Person implements Serializable {..}|
+
+Dies kann dazu dienen, Klassen in Files einfach abzuspeichern und wieder reinzuladen
+
+\lstinputlisting{code/serializing.java}
+
+ACHTUNG: Wird die Klasse vor dem Deserialisieren abgeändert, z.B. eine neue Variable, funktioniert dies nicht!
