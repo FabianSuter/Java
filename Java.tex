@@ -2,12 +2,20 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 
-\usepackage{hyperref}%links in the pdf
-\hypersetup{pdfborder = {0 0 0}}%No borders around Hyperlinks
+\usepackage{hyperref}           % Links in the pdf
+\hypersetup{pdfborder = {0 0 0}}% No borders around Hyperlinks
 
 %Layout
-\usepackage{multicol, geometry, tcolorbox, fancyhdr, lastpage, dirtytalk, qrcode, rotating, tabularx}
-% mehrere spalten, page layout, farbboxen der titel, header/footer, linkt to last page, make the use of "" easier, QR code im Titel, Rotate tables
+\usepackage{multicol,   % Mehrere Spalten
+            geometry,   % Page layout
+            tcolorbox,  % Color boxes for titles and sections
+            fancyhdr,   % Header / Footer
+            lastpage,   % Link to last page
+            dirtytalk,  % Make the use "" easier
+            qrcode,     % QR-Code im Titel
+            rotating,   % Rotate tables
+            tabularx}   % Fancier tables, mainly auto-text-wrap
+
 \geometry{margin=1cm}
 \parindent 0pt
 \pagestyle{fancy}
@@ -29,31 +37,30 @@
 
 \usepackage{enumitem}%Itemise 
 
-%Display Code
+%Display Code, see also https://nasa.github.io/nasa-latex-docs/html/examples/listing.html
 \usepackage{listings}
 \definecolor{codeGreen}{RGB}{69, 161, 18}
 \definecolor{backgroundcolor}{RGB}{255,255,255}
-\lstdefinestyle{mystyle}{
-    language = Java,
-    backgroundcolor=\color{backgroundcolor},
-    commentstyle=\color{blue},
-    keywordstyle=\color{codeGreen},
-    numberstyle=\tiny\color{black},
-    stringstyle=\color{olive},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,                  
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=none,                    
-    numbersep=5pt,                  
-    showspaces=false,                
-    showstringspaces=false,
-    showtabs=false,                  
-    tabsize=2,
-    morekeywords  = {final, override, String}
-}
-\lstset{style=mystyle}
+    \lstdefinestyle{mystyle}{
+        language = Java,                            % Program language
+        backgroundcolor=\color{backgroundcolor},    % Background color
+        commentstyle=\color{blue},                  % Comment color
+        keywordstyle=\color{codeGreen},             % Keyword style (see also bottom)
+        numberstyle=\tiny\color{black},             % Line number color
+        stringstyle=\color{olive},                  % String color
+        basicstyle=\ttfamily\footnotesize,          % Fontsize
+        breakatwhitespace=false,                    % Automatic breaks only at whitespace
+        breaklines=true,                            % Automatic line breaking
+        captionpos=b,                               % Caption position (here at bottom)
+        keepspaces=true,                            % Keep spaces in text, i.e. for indentation
+        numbers=none,                               % Line numbers (none, left, right)
+        numbersep=5pt,                              % Separation from code
+        showspaces=false,                           % Show spaces with underscores, overrides showstringspaces
+        showstringspaces=false,                     % Underline spaces within strings only
+        showtabs=false,                             % Underline tabs within strings only
+        tabsize=2,                                  % Default tabsize in code
+        morekeywords  = {final, override, String}   % Add keywords to set
+    }\lstset{style=mystyle}                         % Set this as default
 
 % color for  Titel / sub Titel
 \definecolor{sectionbarcolor}{RGB}{148,0,255}
@@ -90,10 +97,10 @@
 }
 
 %Information for maketitle
-\title{\vspace{-1cm}Java für C++-Programmierer}
+\title{\vspace{-1cm}Java für CPP-Programmierer}
 \subtitle{HS 2024, Peter Bühler}
 \author{Fabian Suter, \today}
-\date{{\small 0.0.1}}
+\date{{\small 1.0.0}}
 
 %Header & footer
 \fancyhf{}
@@ -130,7 +137,5 @@
         \input{Sections/09_Stream-API.tex} %Evtl. auskommentieren für Prüfung
         \input{Sections/99_Snippets.tex}
         
-        % \section{Emotional support meme}           
-
 	\end{multicols*}
 \end{document}

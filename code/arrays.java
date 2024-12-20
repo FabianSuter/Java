@@ -1,3 +1,5 @@
+public class Arrays{
+    public static void main(String[] args) {
 int[] array = {1, 2, 3};
 
 for(int i=0; i < array.length; i++){
@@ -13,3 +15,5 @@ int[][] m = new int[2][3];
 // int[Zeile][Spalte]
 // m.length    => Anzahl Zeilen
 // m[0].length => Anzahl Spalten
+}
+}

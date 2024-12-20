@@ -1,5 +1,3 @@
-package javac.v4;
-
 public class VariadicMethodString {
 	
 	public static String concat(String delim, String ...texts) {

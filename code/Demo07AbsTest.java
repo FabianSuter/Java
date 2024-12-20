@@ -1,9 +1,4 @@
-package javac.v2.demo;
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-class Demo07AbsTest {
+public class Demo07AbsTest {
     @Test
     @DisplayName("Positive Number")
     void testPositiveValue() {

@@ -1,3 +1,4 @@
+public class Exceptions{
 public static void foo() {
     try{
         System.out.println("A");
@@ -10,3 +11,4 @@ public static void foo() {
         System.out.println("Finally");
     }
 } // Ausgabe: A Catch java.lang.Exception:B Finally
+}
