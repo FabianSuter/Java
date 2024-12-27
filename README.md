@@ -9,5 +9,6 @@ OST Rapperswil
 
 Die Zusammenfassung wurde zwar sorgfältig erstellt, allerdings kann keine Garantie für den Inhalt gegeben werden.
 Einige Inhalte wurden aus den Unterrichtsmaterialien entnommen.
+Besten Dank an Fabian Steiner fürs Gegenlesen.
 
 (Die Basis dieser Zusammenfassung ist von Fabian Steiner, https://github.com/Iceteavanill/Cheatsheet-Prog_Cpp_FS_2024_OST)

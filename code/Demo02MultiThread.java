@@ -12,4 +12,4 @@ public class Demo02MultiThread {
         }
     } 
 }
-// Ausgabe: A:1, B:1, A:2, B:2, ...
+// Ausgabe: undefiniert
