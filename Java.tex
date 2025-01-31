@@ -1,6 +1,7 @@
 \documentclass[fontsize=8pt, a4paper, fleqn, landscape, DIV=calc]{scrartcl}
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
+\usepackage{tikz}   % M.K.: added knma
 
 \usepackage{hyperref}           % Links in the pdf
 \hypersetup{pdfborder = {0 0 0}}% No borders around Hyperlinks
@@ -70,11 +71,17 @@
 \definecolor{subsectiontextcolor}{RGB}{0,0,0}
 \definecolor{subsubsectiontextcolor}{RGB}{0, 0, 0}
 
+
+% Farben definieren, from M.K., not sure where yet
+% \definecolor{purplecode}{RGB}{128, 0, 128} % Lila für Vehicle
+% \definecolor{turquoisecode}{RGB}{0, 128, 128} % Türkis für House
+
+
 %section color box
 \setkomafont{section}{\mysection}
 \newcommand{\mysection}[1]{%
     \Large%
-    \begin{tcolorbox}[colback=sectionbarcolor, coltext=sectiontextcolor, beforeafter skip=1pt, boxrule=0pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt]%
+    \begin{tcolorbox}[colback=sectionbarcolor, coltext=sectiontextcolor, beforeafter skip=-0.15cm, boxrule=0pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt]%
         {#1}%
     \end{tcolorbox}%
 }
@@ -83,7 +90,7 @@
 \setkomafont{subsection}{\mysubsection}
 \newcommand{\mysubsection}[1]{%
     \Large%
-    \begin{tcolorbox}[colback=subsectionbarcolor, coltext=subsectiontextcolor, beforeafter skip=0pt, boxrule=0pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt]%
+    \begin{tcolorbox}[colback=subsectionbarcolor, coltext=subsectiontextcolor, beforeafter skip=-0.05cm, boxrule=0pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt]%
         {#1}%
     \end{tcolorbox}%
 }
@@ -91,7 +98,7 @@
 %subsubsection color box
 \setkomafont{subsubsection}{\mysubsubsection}
 \newcommand{\mysubsubsection}[1]{%
-    \begin{tcolorbox}[colback=subsubsectionbarcolor, coltext=subsubsectiontextcolor, beforeafter skip=1pt, boxrule=0pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt]%
+    \begin{tcolorbox}[colback=subsubsectionbarcolor, coltext=subsubsectiontextcolor, beforeafter skip=-0.05cm, boxrule=0pt, arc=2pt, left=0pt, right=0pt, top=0pt, bottom=0pt]%
         {#1}%
     \end{tcolorbox}%
 }
@@ -99,8 +106,8 @@
 %Information for maketitle
 \title{\vspace{-1cm}Java für CPP-Programmierer}
 \subtitle{HS 2024, Peter Bühler}
-\author{Fabian Suter, \today}
-\date{{\small 1.0.1}}
+\author{Fabian Suter, Martina Knobel}
+\date{{\small \today $\qquad$ 1.0.2}}
 
 %Header & footer
 \fancyhf{}
@@ -116,7 +123,10 @@
         \begin{minipage}{0.75\columnwidth}
 		      \maketitle
         \end{minipage}
-        \begin{minipage}{0.2\columnwidth}
+        \begin{minipage}{0.1\columnwidth}
+            \includegraphics[width=0.7\linewidth]{pictures/Java-Logo.png}
+        \end{minipage}
+        \begin{minipage}{0.1\columnwidth}
             \begin{center}
                 \quad
                 \qrcode[height=1cm]{https://github.com/FabianSuter}
@@ -134,7 +144,7 @@
         \input{Sections/06_Exceptions.tex}
         \input{Sections/07_Streams.tex}
         \input{Sections/08_Threads.tex}
-        \input{Sections/09_Stream-API.tex} %Evtl. auskommentieren für Prüfung
+        \input{Sections/09_Stream-API.tex}
         \input{Sections/99_Snippets.tex}
         
 	\end{multicols*}
