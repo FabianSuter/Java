@@ -1,9 +1,9 @@
+{\small
 \section{Basics}
 
-\subsection{Grundsätzlich}
+\subsection{Grundsätzlich: Java ...}
 
-Diese Zusammenfassung dient zur Hilfe beim Programmieren mit Java anhand von C++-Vorwissen. Es gibt einige wichtige Unterschiede, \textbf{Java:}
-
+% Diese Zusammenfassung dient zur Hilfe beim Programmieren mit Java anhand von C++-Vorwissen. Es gibt einige wichtige Unterschiede, \textbf{Java:}
 \begin{itemize}[itemsep=1pt, parsep=0pt]
     \item kennt keine Zeiger / Pointer
     \item kennt keine Funktionen (reine OO-Sprache)
@@ -13,125 +13,122 @@ Diese Zusammenfassung dient zur Hilfe beim Programmieren mit Java anhand von C++
     \item stellt eine umfangreiche Klassenbibliothek zur Verfügung
     \item -Programme sind plattformunabhängig
     \item ist weniger hardwarenah wie C++
-    \item ...
 \end{itemize}
 
-\subsection{Sourcecode Hello world Java}
-
-\lstinputlisting{code/HelloWorld.java}
-
-% TODO: In Schleifen aufführen
-% \subsection{For each Loop}\label{forEach}
-
-% \verb|For each| - Loops laufen automatisch ein Array ab, ohne das zuerst die Grösse ermittelt werden muss. 
-% Die C - \verb|for| - Loop Syntax wurde etwas erweitert.
-% Syntax:
-
-% \lstinputlisting{code/forEach.cpp}
-
-% Siehe: Als Arrayname wird ein \say{Pointer} auf das Array verlangt, nicht auf das erste Element!  
-% Ein \verb|For each| funktioniert \textbf{nicht} mit einem \textbf{Pointerpointer}. 
-
-
 \subsection{Java Runtime}
-Der Compiler erzeugt anders als in C++ \textbf{Bytecode}, welcher anschliessend auf einer Java Virtual Machine (JVM) laufen kann.
-Dadurch wird Java plattformunabhängig, da jede Plattform eine JVM hat, sei es Windows, Android oder MacOS.
+Der Compiler erzeugt anders als in C++ \textbf{Bytecode}, welcher anschliessend auf einer \textbf{J}ava \textbf{V}irtual \textbf{M}achine laufen kann.
+$\Rightarrow$ Java \tikz[baseline=(text.base)]\node[fill=yellow, fill opacity=0.3, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {plattformunabhängig};, 
+da jede Plattform (MacOS) eine JVM hat.
 
 
 \section{Datentypen}
 
-Ein Datentyp besteht aus \textit{Werten} und \textit{Operationen}. Java besitzt zwei generelle Datentypen, 
-namentlich \textbf{Primitive Datentypen} und \textbf{Referenzdatentypen}.
+Ein Datentyp besteht aus \textit{Werten} und \textit{Operationen}. In Java:\\
+\vspace{-0.2cm}
+\textbf{Primitive Datentypen} $\Leftrightarrow$ \textbf{Referenzdatentypen}.
 
 \subsection{Primitive Datentypen}
-Sie haben plattformunabhängig den gleichen Wertebereich, es gibt keine \verb|unsigned|-Typen. Für bool'sche Werte gibt es den Datentyp \verb|boolean|.
+    Plattformunabhängig gleicher Wertebereich, keine \verb|unsigned|-Typen.
+    \vspace{-0.1cm} 
 
-\begin{center}
-    \begin{tabular}{lll}
-        \rowcolor[RGB]{239,239,239} 
-        \textbf{Typ} & \textbf{Beschr.}        & \textbf{Beispiele} \\ \hline
-        boolean      & Bool'scher Wert         & true, false \\
-        char         & Textzeichen (UTF16)     & 'a', 'B', etc. \\
-        byte         & Ganzzahl (8 Bit)        & -128 bis 127 \\
-        short        & Ganzzahl (16 Bit)       & -32'768 bis 32'767 \\
-        int          & Ganzzahl (32 Bit)       & $ -2^{31} $ bis $ 2^{31}-1 $ \\
-        long         & Ganzzahl (64 Bit)       & $ -2^{63} $ bis $ 2^{63}-1 $, 1L \\
-        float        & Gleitkommazahl (32 Bit) & 0.1f, 2e4f \\
-        double       & Gleitkommazahl (64 Bit) & 0.1, 2e4 \\
-    \end{tabular}
-\end{center}
+    \begin{center}
+        \begin{tabular}{lll}
+            \rowcolor[RGB]{239,239,239} 
+            \textbf{Typ} & \textbf{Beschr.}        & \textbf{Beispiele} \\ \hline
+            boolean      & Bool'scher Wert         & true, false \\
+            char         & Textzeichen (UTF16)     & 'a', 'B', etc. \\
+            byte         & Ganzzahl (8 Bit)        & -128 bis 127 \\
+            short        & Ganzzahl (16 Bit)       & -32'768 bis 32'767 \\
+            int          & Ganzzahl (32 Bit)       & $ -2^{31} $ bis $ 2^{31}-1 $ \\
+            long         & Ganzzahl (64 Bit)       & $ -2^{63} $ bis $ 2^{63}-1 $, 1L \\
+            float        & Gleitkommazahl (32 Bit) & 0.1f, 2e4f \\
+            double       & Gleitkommazahl (64 Bit) & 0.1, 2e4 \\
+        \end{tabular}
+    \end{center}
+    \vspace{-0.2cm}
 
-Gleitkommazahlen ohne Angaben sind automatisch \verb|double|.
+    Gleitkommazahlen ohne Angaben sind automatisch \verb|double|.
 
-\subsubsection{Überlauf / Unterlauf}
-Bei \textbf{Ganzzahlen} ist der Überlauf in Java definiert, im Gegensatz zu C++.\\
-2147483647 + 1 $ \rightarrow $ -2147483648\\
+    \vspace{-0.1cm} 
 
-Bei \textbf{Gleitkommazahlen} gilt dasselbe:\\
-2 * 1e308 $ \rightarrow $ \verb|POSITIVE_INFINITY|\\
-5e-324 / 2 $ \rightarrow $ 0.0
+    \subsubsection{Überlauf / Unterlauf}
+        \begin{tabular}{ll}
+            \textbf{Ganzzahlen}         & 2147483647 + 1 $ \rightarrow $ -2147483648 \\ \hline
+            \textbf{Gleitkommazahlen}   & 2 * 1e308 $ \rightarrow $ \verb|POSITIVE_INFINITY|\\
+            & 5e-324 / 2 $ \rightarrow $ 0.0\\
+        \end{tabular}
+        \vspace{-0.3cm}
 
-\subsubsection{Undefinierte Operationen}
-\textbf{Ganzzahlen} werfen bei Division/Modulo durch 0 einen Fehler bzw. eine Exception.\\
+    \subsubsection{Text-Literale}
+        \begin{tabular}{l}
+            \textbf{char} mit Apostrophen: \verb|'A'|, \verb|'\n'| (NewLine), \verb|'\''| (Apostroph) \\
+            \textbf{String} mit Anführungszeichen: \verb|"Say \"hello\"!\n"|
+        \end{tabular}
+        \vspace{-0.3cm} 
 
-\textbf{Gleitkommazahlen} werfen bei Division durch 0 ein \verb|POSITIVE_INFINITY| resp. \verb|NEGATIVE_INFINITY|\\
-Bei undefinierten Rechnungen wie 0 / 0 wird \verb|NaN| zurückgegeben.
-
-\subsubsection{Text-Literale}
-\textbf{char} mit Apostrophen: \verb|'A'|, \verb|'\n'| (NewLine), \verb|'\''| (Apostroph) \\
-
-\textbf{String} mit Anführungszeichen: \verb|"Say \"hello\"!\n"|
-
+    \subsubsection{Undefinierte Operationen}
+        \begin{tabular}{l}
+            \textbf{Ganzzahlen} werfen bei Division/Modulo durch 0 einen\\
+            \tikz[baseline=(text.base)]\node[fill=red, fill opacity=0.2, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {Fehler}; bzw. eine \verb|null|-Referenz generiert eine \tikz[baseline=(text.base)]\node[fill=red, fill opacity=0.2, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {Exception};\\ \hline
+            \textbf{Gleitkommazahlen} werfen bei Division durch 0 ein\\
+            \tikz[baseline=(text.base)]\node[fill=red, fill opacity=0.2, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {\verb|POSITIVE_INFINITY|}; resp. \tikz[baseline=(text.base)]\node[fill=red, fill opacity=0.2, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {\verb|NEGATIVE_INFINITY|};\\ \hline
+            Bei undefinierten Rechnungen wie 0 / 0 wird \tikz[baseline=(text.base)]\node[fill=red, fill opacity=0.2, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {\verb|NaN|}; zurückgegeben.\\
+        \end{tabular}
+        \vspace{-0.3cm}
+    
 \subsection{Referenzdatentypen}
 
-\subsubsection{null-Referenz}
-Spezielle Referenz auf "kein Objekt", vordefinierte Konstante, welche für alle Referenztypen gültig ist. \textit{Dereferenzieren} der
-\verb|null|-Referenz generiert eine \verb|NullPointerException|
+    \subsubsection{null-Referenz}
+        Spezielle Referenz auf "kein Objekt", vordefinierte Konstante, welche
+        \tikz[baseline=(text.base)]\node[fill=yellow, fill opacity=0.3, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {für alle Referenztypen gültig}; ist. \textit{Dereferenzieren} der
+        \verb|null|-Referenz generiert eine \tikz[baseline=(text.base)]\node[fill=red, fill opacity=0.3, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {\verb|NullPointerException|};
+        \vspace{-0.3cm}
 
-\subsubsection{Klassen}
-Siehe \ref{Klassen}
+    \subsubsection{Klassen: \textit{Siehe Kapitel \ref{Klassen}}}
 
-\subsubsection{Arrays}
-Arrays speichern wie in C++ mehrere Elemente mit selbem Datentyp. Der Zugriff erfolgt über Index, die Elemente liegen nebeneinander im Speicher.
-Die Grösse des Arrays muss bei der Deklaration festgelegt werden und ist später nicht mehr änderbar.\\
-Die Anzahl der Elemente kann in Java direkt mit \verb|length| abgerufen werden, siehe auch \textbf{\ref{Array-Loop}}.\\
-Falls der Index ungültig ist, wird eine\\
-\textbf{ArrayIndexOutOfBoundsException} geworfen.
+    \subsubsection{Arrays}
+        Arrays speichern wie in C++ mehrere Elemente mit selbem Datentyp. Der Zugriff erfolgt über Index, die Elemente liegen nebeneinander im Speicher.
+        Die Grösse des Arrays muss bei der Deklaration festgelegt werden und ist später nicht mehr änderbar.\\
+        Die Anzahl der Elemente kann in Java direkt mit \verb|length| abgerufen werden, siehe auch \textbf{\ref{Array-Loop}}.\\
+        Falls der Index ungültig ist, wird eine\\
+        \tikz[baseline=(text.base)]\node[fill=red, fill opacity=0.3, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {\textbf{ArrayIndexOutOfBoundsException}}; geworfen.
+        \vspace{-0.3cm}
 
-\subsubsection{Enums}
-Ähnliche Verwendung wie in C++. Enums können als Konstantenlisten verwendet werden:
-\lstinputlisting{code/Weekday.java}
+    \subsubsection{Enums}
+        Ähnliche Verwendung wie in C++. Enums können als Konstantenlisten verwendet werden:
+        \lstinputlisting{code/Weekday.java}
+        \vspace{-0.3cm}
 
-\subsubsection{Collections}
-\begin{center}
-    \begin{tabular}{lll}
-        \rowcolor[RGB]{239,239,239} 
-        \textbf{Interface} & \textbf{Klassen} & \textbf{Eigenschaften} \\ \hline
-        List & ArrayList, LinkedList & Folge von Elementen, \\
-             &                       & Duplikate möglich\\
-        \hline
-        Set  & HashSet, TreeSet & Menge von Elementen, \\
-             &                       & keine Duplikate \\
-        \hline
-        Map  & HashMap, TreeMap & Abbildung Schlussel $\rightarrow$ Werte, \\
-        &                       & keine Duplikate \\
-    \end{tabular}
-\end{center}
-
-Siehe auch Kapitel \ref{Collections} 
+    \subsubsection{Collections: \textit{Siehe auch Kapitel \ref{Collections}}}
+        \begin{center}
+            \begin{tabular}{lll}
+                \rowcolor[RGB]{239,239,239} 
+                \textbf{Interface} & \textbf{Klassen} & \textbf{Eigenschaften} \\ \hline
+                List & ArrayList, LinkedList & Folge von Elementen, \\
+                    &                       & Duplikate möglich\\
+                \hline
+                Set  & HashSet, TreeSet & Menge von Elementen, \\
+                    &                       & keine Duplikate \\
+                \hline
+                Map  & HashMap, TreeMap & Abbildung Schlüssel \\
+                    &                  & $\hookrightarrow$ Werte, \\
+                    &                  & keine Duplikate \\
+            \end{tabular}
+        \end{center}
+        \vspace{-0.6cm}
 
 \subsection{Typumwandlung}
-
-\begin{minipage}{0.4\columnwidth}
-    \textbf{Implizit:}\\
-    Klein zu Gross,\\
-    kein Cast-Operator erf.\\
-    \lstinputlisting{code/implizit.java}
-\end{minipage}
-\begin{minipage}{0.55\columnwidth}
-    \textbf{Explizit:}\\
-    Gross zu Klein,\\
-    Cast-Operator erf.\\
-    \lstinputlisting{code/explizit.java}
-\end{minipage}
-
+    \begin{minipage}{0.4\columnwidth}
+        \textbf{Implizit:}\\
+        Klein zu Gross,\\
+        kein Cast-Operator erf.\\
+        \lstinputlisting{code/implizit.java}
+    \end{minipage}
+    \begin{minipage}{0.55\columnwidth}
+        \textbf{Explizit:}\\
+        Gross zu Klein,\\
+        Cast-Operator erf.\\
+        \lstinputlisting{code/explizit.java}
+    \end{minipage}
+    \vspace{-0.3cm} 
+}
