@@ -1,43 +1,109 @@
+{\small
 \section{Schnittstellen}
-Eine Schnittstelle dient als Schleuse zwischen Klasse und Aussenwelt. Die Klasse muss die Funktionalität \textit{implementieren},
-die Aussenwelt darf die Funktionalität \textit{nutzen}.\\
-Die Methode(n) einer Schnittstelle sind implizit \verb|public| und \verb|abstract|. Deshalb werden nur \textbf{Methodendeklarationen} aufgeführt,
-alles andere ist ungültig/unnötig.\\
+    \begin{tabular}{l}
+        $\bullet$ Dient als Schleuse zwischen Klasse und Aussenwelt.\\
+        $\bullet$ Die Klasse muss die Funktionalität \textit{implementieren}\\
+        $\bullet$ Die Aussenwelt darf die Funktionalität \textit{nutzen}.\\\hline
+        $\bullet$ Methode(n) einer Schnittstelle: implizit \verb|public| und \verb|abstract|.\\
+        $\bullet$ Deshalb werden nur \textbf{Methodendeklarationen} aufgeführt,\\
+        $\qquad$ alles andere ist ungültig/unnötig.\\\hline
 
-Diese Taktik wird als \textbf{lose Kopplung} bezeichnet und erlaubt unabhängige Entwicklung verschiedener Teams.\\
+        $\bullet$ Diese Taktik wird als \textbf{lose Kopplung} bezeichnet.\\
+        $\bullet$ Erlaubt unabhängige Entwicklung verschiedener Teams.\\\hline
 
-Mehrere Klassen können eine Schnittstelle implementieren, eine Klasse kann aber auch mehrere Schnittstelle implementieren $\rightarrow$
-\textbf{Mehrfach-Implementierung} erlaubt.
+        $\bullet$ Mehrere Klassen können eine Schnittstelle implementieren\\
+        $\bullet$ Klasse kann aber auch mehrere Schnittstellen implementieren\\
+        $\qquad$ $\rightarrow$ \textbf{Mehrfach-Implementierung} erlaubt.\\
+    \end{tabular}
+    \vspace{-0.3cm}
 
 \subsection{Abstrakte Klassen vs. Interfaces}
-\begin{tabularx}{\linewidth}{|X c X|} \hline
-    \textbf{Abstrakte Klassen} & & \textbf{Interfaces} \\
-    (siehe auch \ref{AbstractClass} ) enthalten Instanzvariablen, Konstruktoren und teilweise implementierte Methoden & $\longleftrightarrow $ & enthalten nur Deklarationen, keinen Code \\
-    \hline
-\end{tabularx}
+    \begin{tabularx}{\linewidth}{|X c X|} \hline
+        \tikz[baseline=(text.base)]\node[fill=blue, fill opacity=0.3, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {\textbf{Abstrakte Klassen}}; & & \tikz[baseline=(text.base)]\node[fill=green, fill opacity=0.3, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {\textbf{Interfaces}}; \\
+        (siehe auch \ref{AbstractClass} ) enthalten Instanzvariablen, Konstruktoren und teilweise implementierte Methoden & $\longleftrightarrow $ & enthalten nur Deklarationen, keinen Code \\
+        \hline
+    \end{tabularx}
 
-Wann Interfaces?
-\begin{itemize}
-    \itemsep0em
-    \item Implementierung (noch) nicht bekannt
-    \item Implementierungen haben wenig gemeinsamen Code
-    \item Losere Kopplung
-\end{itemize}
-
-Wann abstrakte Klassen?
-\begin{itemize}
-    \itemsep0em
-    \item Code bei mehreren Klassen wiederverwenden
-    \item Klassen haben gemeinsame Instanzvar. und Methoden
-    \item Konstruktor erforderlich, um Instanzvar. zu init.
-\end{itemize}
+    \begin{tabular}{l}
+        \rowcolor[RGB]{239,239,239} 
+        \textbf{Wann \tikz[baseline=(text.base)]\node[fill=green, fill opacity=0.3, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {Interfaces};?}\\\hline
+        $\bullet$ Implementierung (noch) nicht bekannt\\
+        $\bullet$ Implementierungen haben wenig gemeinsamen Code\\
+        $\bullet$ Losere Kopplung\\\hline
+        \rowcolor[RGB]{239,239,239} 
+        \textbf{Wann \tikz[baseline=(text.base)]\node[fill=blue, fill opacity=0.3, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {abstrakte Klassen};?}\\\hline
+        $\bullet$ Code bei mehreren Klassen wiederverwenden\\
+        $\bullet$ Klassen haben gemeinsame Instanzvar. und Methoden\\
+        $\bullet$ Konstruktor erforderlich, um Instanzvar. zu init.\\
+    \end{tabular}
+    \vspace{-0.3cm}
 
 \subsection{Ein Interface - mehrere Implementierung}
-\begin{center}
-    \includegraphics[width=0.9\columnwidth]{pictures/interface1-class2.png}
-\end{center}
+    \vspace{-0.2cm}
+    \begin{center}
+        \begin{minipage}{0.4\columnwidth}
+                % Code für Vehicle
+                \lstinputlisting{code/interfaceVehicle.java}
+        \end{minipage}
+    \end{center}
+    \vspace{-0.6cm}
+    \begin{center}
+        \begin{minipage}{0.47\columnwidth}% Code für RegularCar (links)
+            \lstset{
+                basicstyle=\scriptsize\ttfamily\color{purplecode}, % Kleinere Schriftgröße + Violett Stil
+                keywordstyle=\bfseries\color{purplecode},
+                identifierstyle=\color{purplecode},
+            }
+            \lstinputlisting{code/RegularCar.java}
+        \end{minipage}
+        \hspace{0.01\columnwidth} % Abstand für den Strich
+        \vrule width 0.5pt % Vertikaler Strich
+        \hspace{0.01\columnwidth} % Abstand für den Strich
+        \begin{minipage}{0.47\columnwidth} % Code für RacingCar (rechts)
+            \lstset{
+                basicstyle=\scriptsize\ttfamily\color{turquoisecode}, % Kleinere Schriftgröße + Türkis Stil
+                keywordstyle=\bfseries\color{turquoisecode},
+                identifierstyle=\color{turquoisecode},
+            }
+            \lstinputlisting{code/RacingCar.java}
+        \end{minipage}
+    \end{center}
+    \vspace{-0.2cm}
 
 \subsection{Mehrere Interfaces - eine Implementierung}
-\begin{center}
-    \includegraphics[width=0.9\columnwidth]{pictures/interface2-class1.png}
-\end{center}
+    \vspace{-0.2cm}
+    \begin{center}
+        % Code für Vehicle (links)
+        \begin{minipage}{0.49\columnwidth}
+            \lstset{
+                basicstyle=\scriptsize\ttfamily\color{purplecode}, % Kleinere Schriftgröße + Violett Stil
+                keywordstyle=\bfseries\color{purplecode},
+                identifierstyle=\color{purplecode},
+            }
+            \lstinputlisting{code/interfaceVehicle.java}
+        \end{minipage}
+        \hfill
+        % Code für House (rechts)
+        \begin{minipage}{0.49\columnwidth}
+            \lstset{
+                basicstyle=\scriptsize\ttfamily\color{turquoisecode}, % Kleinere Schriftgröße + Türkis Stil
+                keywordstyle=\bfseries\color{turquoisecode},
+                identifierstyle=\color{turquoisecode},
+            }
+            \lstinputlisting{code/interfaceHouse.java}
+        \end{minipage}
+    \end{center}
+    \vspace{-0.9cm}
+    \begin{center}
+        \begin{minipage}{0.8\columnwidth}
+            % MobileHome
+            {\scriptsize
+            \lstinputlisting{code/mobileHome.java}
+            \vspace{-0.6cm}
+            \textcolor{purplecode}{\lstinputlisting{code/mobileHome_1.java}}
+            \vspace{-0.6cm}
+            \textcolor{turquoisecode}{\lstinputlisting{code/mobileHome_2.java}}}
+        \end{minipage}
+    \end{center}
+    \vspace{-0.6cm}
+}
