@@ -1,80 +1,107 @@
+{\small
 \section{Threads}
-Schnellere Programme:
-\begin{itemize}[itemsep=0em, parsep=0pt]
-    \item Aufteilen einer Datenmenge in mehrere Teile, um parallel zu arbeiten
-    \item Teilresultate nach Verarbeitung zusammenführen
-    \item Bsp.: Sortierverfahren, Komprimierung, Bildverarbeitung
-\end{itemize}
-Einfachere Programme:
-\begin{itemize}[itemsep=0em, parsep=0pt]
-    \item Gleichzeitig oder verzahnt ausführbare Abläufe
-    \item Bsp.: Layout, Speichern im Hintergrund
-\end{itemize}
-Multi-Core-Prozessoren können mehrere Threads parallel ausführen, für jeden Core zwei Threads.
+    \begin{tabular}{l}
+        \rowcolor[RGB]{239,239,239} 
+        \textbf{Schnellere Programme}\\\hline
+        $\bullet$ Datenmenge in mehrere Teile aufteilen, um parallel zu arbeiten\\
+        $\bullet$ Teilresultate nach Verarbeitung zusammenführen\\
+        $\bullet$ Bsp.: Sortierverfahren, Komprimierung, Bildverarbeitung\\
+        \rowcolor[RGB]{239,239,239}
+        \textbf{Einfachere Programme}\\\hline
+        $\bullet$ Gleichzeitig oder verzahnt ausführbare Abläufe\\
+        $\bullet$ Bsp.: Layout, Speichern im Hintergrund\\
+    \end{tabular}
+    Multi-Core-Prozessoren können mehrere Threads parallel ausführen, für jeden Core zwei Threads
+    \vspace{-0.3cm}
 
 \subsection{JVM Thread Modell}
-Java ist ein Single Process System. JVM erzeugt beim Aufstarten einen Thread, welcher \verb|main()| aufruft. Der Programmierer, Subsysteme oder das 
-Laufzeitsystem können ebenfalls Threads starten.
+    \begin{tabular}{l}
+        $\bullet$ Java ist ein Single Process System.\\
+        $\bullet$ JVM erzeugt beim Aufstarten einen Thread,\\
+        $\qquad$ welcher \verb|main()| aufruft.\\
+        $\bullet$ Können auch Threads starten:\\
+        $\qquad$ Der Programmierer, Subsysteme, das Laufzeitsystem\\
+        $\bullet$ JVM läuft, solange Threads laufen, ausser wenn Threads\\
+        $\qquad$ als \textit{Daemon} markiert sind (z.B. Garabge Collector).\\
+        $\bullet$ JVM wartet nicht auf Daemon Threads (werden bei JVM-Ende\\
+        $\qquad$ unkontrollliert abgebrochen).\\
+    \end{tabular}
+    \vspace{-0.3cm}
 
-Die JVM läuft, solange Threads laufen, ausser wenn Threads als \textit{Daemon} markiert sind (z.B. Garabge Collector). JVM wartet nicht auf Daemon Threads, 
-diese werden bei JVM-Ende unkontrollliert abgebrochen.
+    \subsubsection{Runnable Interface}
+        \begin{minipage}{0.48\columnwidth}
+            \includegraphics[width=0.7\linewidth]{pictures/runnable-interface.jpg}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.48\columnwidth}
+            Kann auch als Lambda übergeben werden:\\
+            \verb|Thread(Runnable task)|
+        \end{minipage}
+        Funktionsschnittstelle eines Threads, sie wird beim Starten des Threads durch die JVM gerufen.
+        \vspace{-0.3cm}
 
-\subsubsection{Runnable Interface}
-
-\begin{minipage}{0.48\columnwidth}
-    \includegraphics[width=\linewidth]{pictures/runnable-interface.jpg}
-\end{minipage}
-\hfill
-\begin{minipage}{0.48\columnwidth}
-    Kann auch als Lambda übergeben werden:\\
-    \includegraphics[width=\linewidth]{pictures/runnable-lambda.jpg}
-\end{minipage}
-Funktionsschnittstelle eines Threads, sie wird beim Starten des Threads durch die JVM gerufen.
-
-\subsubsection{Start und Ende}
-Ein Thread wird nach \verb|start()| ausgeführt (über \verb|run()| des \verb|Runnable|-Interfaces):\\
-\lstinputlisting{code/thread.java}
-
-Der Thread endet beim Verlassen von \verb|run|, z.B. durch Ende der MEthode, Return Statemnt oder unbeh. Exception
+    \subsubsection{Start und Ende $\qquad\qquad$ Thread ...}
+        ... wird nach \verb|start()| ausgeführt (über \verb|run()| des \verb|Runnable|-Interfaces):\\
+        \vspace{-0.3cm}
+        \lstinputlisting{code/thread.java}
+        \vspace{-0.1cm}
+        ... endet beim Verlassen von \verb|run|, z.B. durch Ende der Methode, Return Statment oder unbeh. Exception
+        \vspace{-0.3cm}
 
 \subsection{Multi-Thread Beispiel}
-\lstinputlisting{code/Demo02MultiThread.java}
+    \vspace{-0.3cm}
+    \lstinputlisting{code/Demo02MultiThread.java}
+    \vspace{-0.2cm}
 
 \subsection{Alternative Implementationen}
-\subsubsection{Explizit}
-\lstinputlisting{code/MyRunnable.java}
+    \subsubsection{Explizit}
+        \vspace{-0.3cm}
+        \lstinputlisting{code/MyRunnable.java}
+        \vspace{-0.2cm}
 
-\subsubsection{Sub-Klasse von Thread}
-\lstinputlisting{code/SimpleThread.java}
+    \subsubsection{Sub-Klasse von Thread}
+        \vspace{-0.3cm}
+        \lstinputlisting{code/SimpleThread.java}
+        \vspace{-0.2cm}
 
-% \subsection{Ablaufdefinitionen}
-% \subsubsection{join()}
-% \includegraphics[width=\linewidth]{pictures/thread-join.jpg}
+    \subsubsection{join()}
+        \includegraphics[width=0.6\linewidth]{pictures/thread-join.jpg}
+        \vspace{-0.3cm}
 
 \subsection{Thread-Methoden}
+    \subsubsection{Thread Passivierung}
+        \begin{tabular}{l}
+            \textbf{Thread.sleep(milliseconds)} Laufender Thread put to sleep\\ \hline
+            \textbf{Thread.yield()} Laufender Thread gibt Prozessor frei und\\
+            $\qquad\qquad\qquad$ wird wieder ablaufbereit\\
+        \end{tabular}
+        \vspace{-0.3cm} 
 
-\subsubsection{Thread Passivierung}
-\paragraph{Thread.sleep(milliseconds)}
-Laufender Thread wird schlafen gelegt
+    \subsubsection{InterruptedException}
+        Mögliche Exception bei blockierenden Aufrufen, z.B. \verb|join(), sleep(), ...|
 
-\paragraph{Thread.yield()}
-Laufender Thread gibt Prozessor frei und wird wieder ablaufbereit
+        Threads können von aussen unterbrochen werden: \verb|myThread.interrupt()| $\rightarrow$ bricht \verb|join(), sleep(), ...| ab
+        \vspace{-0.3cm} 
 
-\subsubsection{InterruptedException}
-Mögliche Exception bei blockierenden Aufrufen, z.B. \verb|join(), sleep(), ...|
-
-Threads können von aussen unterbrochen werden: \verb|myThread.interrupt()| $\rightarrow$ bricht \verb|join(), sleep(), ...| ab
-
-\subsubsection{Weitere Methoden}
-\verb|static Thread currentThread()| liefert Instanz des Threads \\
-
-\verb|long threadId()| liefert ID des Threads \\
-
-\verb|void setDaemon(boolean on)| Thread als \textit{Daemon} markieren
+    \subsubsection{Weitere Methoden}
+        \begin{tabular}{l}
+            $\bullet$ \verb|static Thread currentThread()| liefert Instanz des Threads \\
+            $\bullet$ \verb|long threadId()| liefert ID des Threads \\
+            $\bullet$ \verb|void setDaemon(boolean on)| Thread als \textit{Daemon} markieren\\
+        \end{tabular}
+        \vspace{-0.3cm} 
 
 \subsection{Synchronisation}
-Threads teilen sich Adressraum und Heap. Wird auf dasselbe Objekt zugegriffen, muss abgesichert werden.
+    \begin{tabular}{l}
+        $\bullet$ Threads teilen sich Adressraum und Heap.\\
+        $\bullet$ Wird auf dasselbe Objekt zugegriffen, muss abgesichert werden.\\
+        $\bullet$ \verb|synchronized|: Modifier für Methoden, ähnlich wie ein Flag.\\
+    \end{tabular}
+    \vspace{-0.1cm} 
+    \lstinputlisting{code/BankAccount.java}
+    \vspace{-0.2cm}
+    \tikz[baseline=(text.base)]\node[fill=orange, fill opacity=0.2, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {Nur ein Thread kann eine der \verb|synchronized|-Methoden zur gleichen Zeit};
+    \tikz[baseline=(text.base)]\node[fill=orange, fill opacity=0.2, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {in derselben Instanz ausführen};
+    \vspace{-0.2cm} 
 
-\verb|synchronized| ist ein Modifier für Methoden, ähnlich wie ein Flag.
-\lstinputlisting{code/BankAccount.java}
-Nur ein Thread kann eine der \verb|synchronized|-Methoden zur gleichen Zeit in derselben Instanz ausführen
+}
