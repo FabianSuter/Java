@@ -16,15 +16,15 @@
 
 \subsection{JVM Thread Modell}
     \begin{tabular}{l}
-        $\bullet$ Java ist ein Single Process System.\\
+        $\bullet$ Java ist ein Single Process System\\
         $\bullet$ JVM erzeugt beim Aufstarten einen Thread,\\
-        $\qquad$ welcher \verb|main()| aufruft.\\
+        $\qquad$ welcher \verb|main()| aufruft\\
         $\bullet$ Können auch Threads starten:\\
         $\qquad$ Der Programmierer, Subsysteme, das Laufzeitsystem\\
         $\bullet$ JVM läuft, solange Threads laufen, ausser wenn Threads\\
-        $\qquad$ als \textit{Daemon} markiert sind (z.B. Garabge Collector).\\
+        $\qquad$ als \textit{Daemon} markiert sind (z.B. Garbage Collector)\\
         $\bullet$ JVM wartet nicht auf Daemon Threads (werden bei JVM-Ende\\
-        $\qquad$ unkontrollliert abgebrochen).\\
+        $\qquad$ unkontrollliert abgebrochen)\\
     \end{tabular}
     \vspace{-0.3cm}
 
@@ -84,6 +84,7 @@
         \vspace{-0.3cm} 
 
     \subsubsection{Weitere Methoden}
+        \vspace{-0.1cm} 
         \begin{tabular}{l}
             $\bullet$ \verb|static Thread currentThread()| liefert Instanz des Threads \\
             $\bullet$ \verb|long threadId()| liefert ID des Threads \\
@@ -97,7 +98,7 @@
         $\bullet$ Wird auf dasselbe Objekt zugegriffen, muss abgesichert werden.\\
         $\bullet$ \verb|synchronized|: Modifier für Methoden, ähnlich wie ein Flag.\\
     \end{tabular}
-    \vspace{-0.1cm} 
+    \vspace{-0.2cm} 
     \lstinputlisting{code/BankAccount.java}
     \vspace{-0.2cm}
     \tikz[baseline=(text.base)]\node[fill=orange, fill opacity=0.2, text opacity=1, rounded corners, inner sep=2pt, minimum height=5pt] (text) {Nur ein Thread kann eine der \verb|synchronized|-Methoden zur gleichen Zeit};
