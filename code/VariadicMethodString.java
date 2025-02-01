@@ -14,11 +14,8 @@ public class VariadicMethodString {
 	public static void main(String[] args) {
 		
 		String cats = concat(", ", "Bella", "Dana", "Tom");
-		System.out.println(cats); // Output: Bella, Dana, Tom
+		System.out.println(cats); //Output: Bella, Dana, Tom
 		
-		String people = concat(";", "Hans", "Claudia", "Felix", "Maria");
-		System.out.println(people); // Output: Hans;Claudia;Felix;Maria
-
-	}
-
-}
+		String people = concat(";","Hans","Claudia","Felix","Maria");
+		System.out.println(people); //Output:Hans;Claudia;Felix;Maria
+	}}

@@ -7,7 +7,4 @@ public static void main(String[] args) {
         System.out.println("Neuer Text: ");
         String inputText2 = scanner.next();
         String both = inputText + inputText2;
-        System.out.println(both);
-    }
-}
-}
+        System.out.println(both);}}}

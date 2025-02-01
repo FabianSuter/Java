@@ -7,6 +7,4 @@ public class Factorial {
             p = p * i;
             ++i;
         }
-        System.out.println(p);
-    }
-}
+        System.out.println(p);}}

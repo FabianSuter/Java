@@ -9,6 +9,5 @@ public static void foo() {
         System.out.println(e);
     } finally {
         System.out.println("Finally");
-    }
-} // Ausgabe: A Catch java.lang.Exception:B Finally
-}
+    }}}
+// Ausgabe: A Catch java.lang.Exception:B Finally
